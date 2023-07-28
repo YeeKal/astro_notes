@@ -2,7 +2,7 @@
 title: Twitter 新图标! 小蓝鸟变 X；Nature 发布人类器官组织图像在生物分子尺度上的早期成果
 publishDate: "2023-07-25T11:39:36.050Z"
 image: "https://cdn.jsdelivr.net/gh/YeeKal/img_land/blog/07/gpt.jpg"
-category: daily
+category: "daily"
 author: "Yeekal"
 layout: "@layouts/BlogLayout.astro"
 tags: [nature, twitter, github]

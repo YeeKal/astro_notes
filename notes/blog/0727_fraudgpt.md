@@ -2,7 +2,7 @@
 title: GPT的另一面 —— FraudGPT： 为欺诈而生
 publishDate: "2023-07-27T11:39:36.050Z"
 image: "https://cdn.jsdelivr.net/gh/YeeKal/img_land/blog/07/gpt.jpg"
-category: daily
+category: "daily"
 author: "Yeekal"
 layout: "@layouts/BlogLayout.astro"
 tags: [claude, planner, llm]

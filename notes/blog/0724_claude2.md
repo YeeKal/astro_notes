@@ -2,7 +2,7 @@
 title: Claude 升级到二代！注册流程比ChatGPT更简单。
 publishDate: "2023-07-24T11:39:36.050Z"
 image: "https://cdn.jsdelivr.net/gh/YeeKal/img_land/blog/07/gpt.jpg"
-category: daily
+category: "daily"
 author: "Yeekal"
 layout: "@layouts/BlogLayout.astro"
 tags: [claude]
