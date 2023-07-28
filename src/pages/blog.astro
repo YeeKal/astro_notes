@@ -1,67 +1,69 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "@astrojs/image/components";
-import Layout from "@layouts/Layout.astro";
+import { Image } from "@astrojs/image/components";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { getFormattedDate } from "@utils/all";
+import { log } from "astro/dist/core/logger/core";
 
-// Filter blog entries with 'draft: false' & date before current date
-const publishedBlogEntries = await getCollection("blog", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+// const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+//   (a, b) =>
+//     new Date(b.frontmatter.publishDate).valueOf() -
+//     new Date(a.frontmatter.publishDate).valueOf()
+// );
+// console.log(posts[0].frontmatter.image);
 
-// Sort content entries by publication date
-publishedBlogEntries.sort(function (a, b) {
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
+const posts = await Astro.glob("../../notes/blog/**/*.{md,mdx}")
+const tags = [...new Set(posts.map((post) => post.frontmatter.tags).flat())];
+console.log("read posts: ",posts.length);
+console.log("read posts: ",posts[0].file);
+console.log("read tags: ",tags);
 ---
 
 <Layout title="Blog">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
-      <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
-      </Fragment>
+      <Fragment slot="title">Yee Blog</Fragment>
+      <Fragment slot="desc"
+        >We write about building startups and thoughts going on our mind.</Fragment
+      >
     </Sectionhead>
     <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
+      <ul class="grid gap-5 grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-2 max-w-4xl mx-auto">
         {
-          publishedBlogEntries.map((blogPostEntry, index) => (
+          posts.map((post) => (
             <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  <Picture
-                    src={blogPostEntry.data.image.src}
-                    alt={blogPostEntry.data.image.alt}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    widths={[200, 400, 800]}
-                    aspectRatio="16:9"
-                    background="#ffffff"
-                    fit="cover"
-                    position="center"
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md"
-                  />
+              <a href={"blog/"+post.file.split("/").pop().split(".")[0]}>
+                <div class="hover:drop-shadow-2xl group">
                   <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                      {blogPostEntry.data.category}
+                    <img class="rounded-md group-hover:opacity-75"
+                      src= "https://picsum.photos/600/400"  //{post.frontmatter.image}
+                      alt="Thumbnail"
+                      // width={400}
+                      // format="avif"
+                      // aspectRatio="16:9"
+                      // class="w-full rounded-md"
+                    />
+                  </div>
+                  <div>
+                    <span class="text-blue-400 uppercase tracking-wider text-xs font-medium">
+                      {post.frontmatter.category}
                     </span>
 
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {blogPostEntry.data.title}
+                    <h2 class="text-base font-semibold leading-snug tracking-tight mt-1 ">
+                      {post.frontmatter.title}
                     </h2>
 
-                    <div class="flex gap-2 mt-3">
+                    <div class="flex gap-2 mt-3 text-xs">
                       <span class="text-gray-400">
-                        {blogPostEntry.data.author}
+                        {post.frontmatter.author}
                       </span>
                       <span class="text-gray-400">• </span>
                       <time
                         class="text-gray-400"
-                        datetime={blogPostEntry.data.publishDate.toISOString()}>
-                        {blogPostEntry.data.publishDate.toDateString()}
+                        datetime={post.frontmatter.publishDate}>
+                        {getFormattedDate(post.frontmatter.publishDate)}
                       </time>
                     </div>
                   </div>
