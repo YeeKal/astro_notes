@@ -1,0 +1,68 @@
+---
+title: Claude 升级到二代！注册流程比ChatGPT更简单。
+publishDate: "2023-07-24T11:39:36.050Z"
+image: "https://cdn.jsdelivr.net/gh/YeeKal/img_land/blog/07/gpt.jpg"
+category: daily
+author: "Yeekal"
+layout: "@layouts/BlogLayout.astro"
+tags: [claude]
+---
+## Claude 2
+
+Claude 升级到二代！注册流程比ChatGPT更简单。
+
+OpenAI 前员工创立的 Anthropic 近期发布了第二代大语言模型 [Claude 2](https://www.anthropic.com/index/claude-2)，其声称比第一代有更强大的推理表现以及能处理更长的文本内容，同时为了树立品牌形象，推出了新的网址域名 [claude.ai](https://claude.ai/)。
+
+Claude 2 支持长达10万的语料输入，这意味着它的处理对象可以不仅仅是对话，还可以是文本文件。在官网给出的例子中，用户可以直接在聊天框里拖入需要分析的文件，并提示 Claude 2 进行类如提取摘要，整理数据，列出表格等处理。相比ChatGPT的插件加持，Claude 2免费体验版本原生即可支持对大批量文本进行总结。用户不需要第三方插件或者对API进行二次包装的其它工具，在Claude的聊天框里拖动一下就可以提取文件中的关键信息。
+
+![claude](imgs/claude.png)
+
+在代码能力上， Claude 2 在 [Codex HumanEval](https://github.com/openai/human-eval) 测试集中的的得分相比前一代从 56.0% 提高到71.2%。根据官网给出的例子，Claude 2 不仅仅限于根据提示指令写代码这一基本操作，还可以在原始代码上根据提示添加合适的针对数据对象的交互操作，说明它不仅理解了代码，还能理解代码所处理的数据对象属性。
+
+## 注册
+
+Claude 2 的注册流程非常简单，点击 [claude.ai](https://claude.ai/) 根据提示输入邮箱和验证码即可，或者直接使用google账号登入，不需要手机号码验证。但是中国依然不在 Claude 2 支持的地区列表内，国内想注册体验的朋友可能需要一些神奇的操作，在此不再过多叙述。
+
+![claude_register.png](imgs/claude_register.png)
+
+## 体验
+
+注册完就可以愉快地开启新的对话了。输入框右侧有两个按钮，其中一个是发送键，另一个回形针样的图标是添加附件的按钮，鼠标悬浮会看到提示，支持最多上传5个文件，每个最大10M。支持常见的pdf, csv, txt等文本文件。
+
+![](imgs/claude_chat.png)
+
+首先看下**中文理解能力**, 回答有条不紊。
+
+![](imgs/claude_chinese.png)
+
+用中文做一下**逻辑测试**，回答完全正确，同时还带有解析。但是解析的第二步和第三步有矛盾，所以这道题看上去更像网上出题人太多了统计出来的结果，而不是推理出来的结果。
+
+![claude_logic](imgs/claude_logic.png)
+
+以上的测试在前两年还可以看作语言模型智能的体现，但是在今天已经是大模型的标配了。这些测试在实际生活只能略做消遣，接下来进行一些工作生活中可能会用到的能力——**阅读文本**。
+
+有一篇关于医药研究的文章，不想完整的读完，扔给它，让它总结一下：
+
+![claude_news](imgs/claude_news.png)
+
+看英文有些吃力，让它给个中文版的摘要：
+
+![claude_news](imgs/claude_news_chinese.png)
+
+上面测试的这篇是 Nature 在7.17发布的关于治疗阿尔兹海默症药物的文章 ["Alzheimer’s drug donanemab helps most when taken at earliest disease stage, study finds"](https://www.nature.com/articles/d41586-023-02321-1), Claude 的回答总结的还算到位，整个摘要呈总-分-总的结构，看起来比较清晰。
+
+但是上面的 pdf 文件是从 Nature 网站上打印出来，如果直接甩链接就更好了。因此接下来测试一下**即时网页访问**能力。
+
+输入网易新闻的一篇关于中国经济的[新闻链接](https://www.163.com/dy/article/I9STPFET0514R9OJ.html), 给出的回答似乎完全不搭。
+![claude_n2](imgs/claude_n2.png)
+
+小小的提示了一下，主题虽然对了，但是其中的内容却依然是胡编乱造的。
+![claude_n3](imgs/claude_n3.png)
+
+一开始我以为是新闻链接里面的非正文内容可能对内容分析有误导性，本着严谨和慈悲的情怀，我又给它一次机会，输入另外一篇澎湃新闻关于郑州公积金调整的[文章](https://m.thepaper.cn/newsDetail_forward_23885777), 结果却被转成了关于天然气的内容。
+
+![claude_n4](imgs/claude_n4.png)
+
+事实上聊天内容里上述被红框标识的部分，已经提示了 Claude 没有访问链接的能力。从以上的网页访问的实验也证明了这一点。但是Claude给出的回答内容本身又极具语言的通顺性和逻辑性，如果不是主题不正确，这些回答可以认为是对提示词的合适恰当的回应。Claude并没有真正的去访问网页，但是它学习到了在类似“总结一下这篇内容”的提示词下面应该做怎样符合上下文的文本回应，因此从在训练过程中压缩的互联网预料里面给出了一个看似符合逻辑的回答。这也表明这些大语言模型只能保证语言逻辑，但不能保证事实逻辑。
+
+在这个例子里面，语言模型没办法透过链接访问到藏在网页里面的另一面内容。就像一个没有四肢的大脑，没办法通过手脚感知外界复杂的纹理，只会在脑海里进行逻辑想象。或许正因如此，ChatGPT 引入了各种各样的插件，把不同的数据类型和计算机操作方式接入到语言模型的推理感知的逻辑里面，从而赋予单纯的文本模型以从各个侧面对复杂事务能得心应手处理的能力。

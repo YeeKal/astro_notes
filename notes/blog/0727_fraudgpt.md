@@ -2,62 +2,11 @@
 title: GPT的另一面 —— FraudGPT： 为欺诈而生
 publishDate: "2023-07-27T11:39:36.050Z"
 image: "https://cdn.jsdelivr.net/gh/YeeKal/img_land/blog/07/gpt.jpg"
-category: Tutorials
+category: daily
 author: "Yeekal"
 layout: "@layouts/BlogLayout.astro"
 tags: [claude, planner, llm]
 ---
-
-
-$$\begin{aligned}\min  \quad & c^Tx \\
-s.t. \quad & F_0+x_1F_1+\cdots + x_mF_m \succeq 0 \end{aligned}$$
-
-$c\in \mathcal{R}^n,x\in \mathcal{R}^n, F_0, \cdots, F_m$ are symmetric matrix
-
-
-
-
-**<font color='Tomato'>Semidefinite Programming Duality</font>**
-
-$$\begin{aligned}
-\mathrm{max}\ \quad & \sum_{i=1}^{m}y_{i}b_{i} \\
-{\textrm{s. t.}}\quad &  \sum_{i=1}^{m}y_{i}A_{i}+S=C \\
-& S\succeq 0.\end{aligned}$$
-
-unorder list:
-
-- You might feel like you are being really "organized" or something but you are just creating a gross shape on the screen that is hard to read.
-- Nested navigation in UIs is a bad idea too, keep things as flat as possible.
-- Nesting tons of folders in your source code is also not helpful.
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D, art3d
-
-def plot_block(x, y, z, width, height, depth, color):
-    v = np.array([
-        [x, y, z],
-        [x + width, y, z],
-        [x + width, y + height, z],
-        [x, y + height, z],
-        [x, y, z + depth],
-        [x + width, y, z + depth],
-        [x + width, y + height, z + depth],
-        [x, y + height, z + depth]
-    ])
-
-    # Define the 6 faces of the block
-    f = np.array([
-        [0, 1, 2, 3], [4, 5, 6, 7], [0, 1, 5, 4],
-        [2, 3, 7, 6], [0, 3, 7, 4], [1, 2, 6, 5]
-    ])
-
-    pc = art3d.Poly3DCollection(v[f], facecolors=color, linewidths=1, alpha=0.15, edgecolors='m')
-    return pc
-
-```
-
 
 **TL:DR**
 
