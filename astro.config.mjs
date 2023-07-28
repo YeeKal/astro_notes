@@ -7,7 +7,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   //site: "https://astroship.web3templates.com",
   site: 'https://YeeKal.github.io',
-  base: 'astro_notes',
   integrations: [
     tailwind(),
     image({
