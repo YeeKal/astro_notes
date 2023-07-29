@@ -34,7 +34,7 @@ console.log("read tags: ",tags);
         {
           posts.map((post) => (
             <li>
-              <a href={"blog/"+post.file.split("/").pop().split(".")[0]}>
+              <a href={"/blog/"+post.file.split("/").pop().split(".")[0]}>
                 <div class="hover:drop-shadow-2xl group">
                   <div>
                     <img class="rounded-md group-hover:opacity-75"
