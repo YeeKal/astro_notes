@@ -5,8 +5,6 @@ import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
 import { getFormattedDate } from "@utils/all";
 import { log } from "astro/dist/core/logger/core";
-// import {analyseTags} from blog.js;
-
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 // const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
@@ -16,24 +14,16 @@ import { log } from "astro/dist/core/logger/core";
 // );
 // console.log(posts[0].frontmatter.image);
 
-export var posts = await Astro.glob("../../notes/blog/**/*.{md,mdx}")
+const posts = await Astro.glob("../../notes/blog/**/*.{md,mdx}");
 const tags = [...new Set(posts.map((post) => post.frontmatter.tags).flat())];
-// const tags_with_ids = analyseTags(tags);
 console.log("read posts: ",posts.length);
 console.log("read posts: ",posts[0].file);
 console.log("read tags: ",tags);
-// console.log("read tags ids: ",tags_with_ids);
 
 const cs = ["red","orange","amber", "yellow", "lime"];
 const ns = [400,500,600];
 const tag_cs = [...cs.map((c) => ns.map((n)=> new Object ({tc:"text-"+c+"-"+(n+300), bc:"bg-"+c+"-"+n})).flat()).flat()];
 console.log("read tags color: ",tag_cs);
-console.log("read tags color: ",tag_cs.length);
-console.log("read tags color: ",25%tag_cs.length);
-
-const tag_coors=[
-  {tc:"text-red-800", bc:"bg-red-500"}
-]
 
 ---
 
