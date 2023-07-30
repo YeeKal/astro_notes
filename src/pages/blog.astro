@@ -24,7 +24,6 @@ const cs = ["red","orange","amber", "yellow", "lime"];
 const ns = [400,500,600];
 const tag_cs = [...cs.map((c) => ns.map((n)=> new Object ({tc:"text-"+c+"-"+(n+300), bc:"bg-"+c+"-"+n})).flat()).flat()];
 console.log("read tags color: ",tag_cs);
-
 ---
 
 <Layout title="Blog">
@@ -53,7 +52,7 @@ console.log("read tags color: ",tag_cs);
               <a href={"/blog/"+post.file.split("/").pop().split(".")[0]}>
                 <div class="hover:drop-shadow-2xl group">
                   <div>
-                    <img class="rounded-md group-hover:opacity-75"
+                    <img class="rounded-md group-hover:opacity-100 group-hover:-translate-y-1 group-hover:shadow-xl"
                       src= "https://picsum.photos/600/400"  //{post.frontmatter.image}
                       alt="Thumbnail"
                       // width={400}
